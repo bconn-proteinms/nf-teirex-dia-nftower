@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/nf-teirex-dia/master/nextflow_schema.json",
+  "title": "nf-teirex-dia pipeline parameters",
+  "description": "DIA workflows for TEI-REX project",
+  "type": "object",
+  "definitions": {
+    "input_output_options": {
+      "title": "Input/output options",
+      "type": "object",
+      "fa_icon": "fas fa-terminal",
+      "description": "Define where the pipeline should find input data and save output data.",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address for completion summary.",
+          "fa_icon": "fas fa-envelope",
+          "help_text": "Set this parameter to your e-mail address to get a summary e-mail with details of the run sent to you when the workflow exits. If set in your user config file (`~/.nextflow/config`) then you don't need to specify this on the command line for every run.",
+          "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+        }
+      }
+    },
+    "reference_genome_options": {
+      "title": "Reference genome options",
+      "type": "object",
+      "fa_icon": "fas fa-dna",
+      "description": "Reference genome related files and options required for the workflow.",
+      "properties": {
+        "fasta": {
+          "type": "string",
+          "format": "file-path",
+          "exists": true,
+          "mimetype": "text/plain",
+          "pattern": "^\\S+\\.fn?a(sta)?(\\.gz)?$",
+          "description": "Path to FASTA genome file.",
+          "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
+          "fa_icon": "far fa-file-code"
+        }
+      }
+    },
+    "max_job_request_options": {
+      "title": "Max job request options",
+      "type": "object",
+      "fa_icon": "fab fa-acquisitions-incorporated",
+      "description": "Set the top limit for requested resources for any single job.",
+      "help_text": "If you are running on a smaller system, a pipeline step requesting more resources than are available may cause the Nextflow to stop the run with an error. These options allow you to cap the maximum resources requested by any single job so that the pipeline will run on your system.\n\nNote that you can not _increase_ the resources requested by any job using these options. For that you will need your own configuration file. See [the nf-core website](https://nf-co.re/usage/configuration) for details.",
+      "properties": {
+        "max_cpus": {
+          "type": "integer",
+          "description": "Maximum number of CPUs that can be requested for any single job.",
+          "default": 16,
+          "fa_icon": "fas fa-microchip",
+          "hidden": true,
+          "help_text": "Use to set an upper-limit for the CPU requirement for each process. Should be an integer e.g. `--max_cpus 1`"
+        },
+        "max_memory": {
+          "type": "string",
+          "description": "Maximum amount of memory that can be requested for any single job.",
+          "default": "128.GB",
+          "fa_icon": "fas fa-memory",
+          "pattern": "^\\d+(\\.\\d+)?\\.?\\s*(K|M|G|T)?B$",
+          "hidden": true,
+          "help_text": "Use to set an upper-limit for the memory requirement for each process. Should be a string in the format integer-unit e.g. `--max_memory '8.GB'`"
+        },
+        "max_time": {
+          "type": "string",
+          "description": "Maximum amount of time that can be requested for any single job.",
+          "default": "240.h",
+          "fa_icon": "far fa-clock",
+          "pattern": "^(\\d+\\.?\\s*(s|m|h|d|day)\\s*)+$",
+          "hidden": true,
+          "help_text": "Use to set an upper-limit for the time requirement for each process. Should be a string in the format integer-unit e.g. `--max_time '2.h'`"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/input_output_options"
+    },
+    {
+      "$ref": "#/definitions/reference_genome_options"
+    },
+    {
+      "$ref": "#/definitions/max_job_request_options"
+    }
+  ],
+  "properties": {
+    "quant_spectra_glob": {
+      "type": "string",
+      "default": "*.raw"
+    },
+    "chromatogram_library_spectra_dir": {
+      "type": "string",
+      "default": null
+    },
+    "chromatogram_library_spectra_glob": {
+      "type": "string",
+      "default": "*.raw"
+    },
+    "spectral_library": {
+      "type": "string",
+      "default": null
+    },
+    "skyline_template_file": {
+      "type": "string",
+      "default": null
+    },
+    "panorama_upload": {
+      "type": "string",
+      "default": "false"
+    },
+    "msconvert_only": {
+      "type": "string",
+      "default": "false"
+    },
+    "result_dir": {
+      "type": "string",
+      "default": "results/nf-teirex-dia"
+    },
+    "report_dir": {
+      "type": "string",
+      "default": "reports/nf-teirex-dia"
+    },
+    "default_skyline_template_file": {
+      "type": "string",
+      "default": "https://github.com/mriffle/nf-teirex-dia/raw/main/resources/template.sky.zip"
+    },
+    "mzml_cache_directory": {
+      "type": "string",
+      "default": "/data/mass_spec/nextflow/nf-teirex-dia/mzml_cache"
+    },
+    "panorama_cache_directory": {
+      "type": "string",
+      "default": "/data/mass_spec/nextflow/panorama/raw_cache"
+    }
+  }
+}
