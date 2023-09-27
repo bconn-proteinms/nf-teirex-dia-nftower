@@ -92,7 +92,7 @@
     },
     "chromatogram_library_spectra_dir": {
       "type": "string",
-      "default": "None"
+      "default": "https://panoramaweb.org/_webdav/00Developer/bdconnoll/tei-rex/%40files/nftower-test/raw-small/"
     },
     "chromatogram_library_spectra_glob": {
       "type": "string",
