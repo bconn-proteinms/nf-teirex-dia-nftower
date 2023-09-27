@@ -100,7 +100,7 @@
     },
     "spectral_library": {
       "type": "string",
-      "default": "None"
+      "default": "https://panoramaweb.org/_webdav/00Developer/bdconnoll/tei-rex/%40files/nftower-test/uniprot_human_sept2022_ADpeptides_yeastENO1.fasta"
     },
     "skyline_template_file": {
       "type": "string",
