@@ -104,7 +104,7 @@
     },
     "skyline_template_file": {
       "type": "string",
-      "default": "None"
+      "default": "https://github.com/mriffle/nf-teirex-dia/raw/main/resources/template.sky.zip"
     },
     "panorama_upload": {
       "type": "string",
