@@ -92,7 +92,7 @@
     },
     "chromatogram_library_spectra_dir": {
       "type": "string",
-      "default": null
+      "default": "None"
     },
     "chromatogram_library_spectra_glob": {
       "type": "string",
@@ -100,11 +100,11 @@
     },
     "spectral_library": {
       "type": "string",
-      "default": null
+      "default": "None"
     },
     "skyline_template_file": {
       "type": "string",
-      "default": null
+      "default": "None"
     },
     "panorama_upload": {
       "type": "string",
@@ -133,6 +133,10 @@
     "panorama_cache_directory": {
       "type": "string",
       "default": "/data/mass_spec/nextflow/panorama/raw_cache"
+    },
+    "quant_spectra_dir": {
+      "type": "string",
+      "default": "https://panoramaweb.org/_webdav/00Developer/bdconnoll/tei-rex/%40files/nftower-test/raw-small/"
     }
   }
 }
