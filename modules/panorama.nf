@@ -13,7 +13,6 @@ process PANORAMA_GET_RAW_FILE_LIST {
     label 'process_low_constant'
     container 'mriffle/panorama-client:1.0.0'
     publishDir "${params.result_dir}/panorama", failOnError: true, mode: 'copy'
-    secret 'PANORAMA_API_KEY'
 
     input:
         each web_dav_url
